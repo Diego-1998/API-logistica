@@ -1,4 +1,4 @@
-package com.works.api;
+package com.works;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
