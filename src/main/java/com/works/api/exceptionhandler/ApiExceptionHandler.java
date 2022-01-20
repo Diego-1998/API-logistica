@@ -1,5 +1,6 @@
 package com.works.api.exceptionhandler;
 
+import com.works.domain.excepction.EntidadeNaoEncontradaException;
 import com.works.domain.excepction.NegocioException;
 import lombok.AllArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -46,6 +47,20 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
         return handleExceptionInternal(ex, problema, headers, status, request);
     }
+    @ExceptionHandler(EntidadeNaoEncontradaException.class)
+    public ResponseEntity<Object>  handleEntidadeNaoEncontradada(EntidadeNaoEncontradaException ex, WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        Problema problema = new Problema();
+        problema.setStatus(status.value());
+        problema.setDataHora(OffsetDateTime.now());
+        problema.setTitulo(ex.getMessage());
+
+        return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+
+    }
+
+
         @ExceptionHandler(NegocioException.class)
         public ResponseEntity<Object>  handleNegocio(NegocioException ex, WebRequest request){
             HttpStatus status = HttpStatus.BAD_REQUEST;

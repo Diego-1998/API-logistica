@@ -1,6 +1,6 @@
 package com.works.api.controller;
 
-import com.works.api.EntregaAssembler;
+import com.works.api.assembler.EntregaAssembler;
 import com.works.api.dto.request.EntregaRequest;
 import com.works.api.dto.response.EntregaResponse;
 import com.works.domain.model.Entrega;
@@ -21,6 +21,7 @@ public class EntregaController {
 
     private EntregaRepository entregaRepository;
     private SolicitacaoEntregaService solicitacaoEntregaService;
+
     private EntregaAssembler entregaAssembler;
 
     @PostMapping
@@ -43,8 +44,4 @@ public class EntregaController {
                 .map(entrega -> ResponseEntity.ok(entregaAssembler.toModel(entrega)))
                 .orElse(ResponseEntity.notFound().build());
     }
-
-
-
-
 }

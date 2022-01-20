@@ -1,4 +1,4 @@
-package com.works.api;
+package com.works.api.assembler;
 
 import com.works.api.dto.request.EntregaRequest;
 import com.works.api.dto.response.EntregaResponse;
