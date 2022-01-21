@@ -9,5 +9,4 @@ public  class Campo {
 
     private String nome;
     private String mensagem;
-
 }

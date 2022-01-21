@@ -9,7 +9,6 @@ import javax.validation.constraints.NotBlank;
 @Getter
 public class DestinatarioInput {
 
-
     @NotBlank
     private String nome;
 

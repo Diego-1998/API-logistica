@@ -1,7 +1,6 @@
 package com.works.domain.model;
 
 import com.works.domain.ClienteId;
-import com.works.domain.ValidationGroups;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +10,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.validation.groups.Default;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
@@ -31,7 +29,7 @@ public class Cliente {
 
     @NotBlank
     @Email
-    @Size(max = 25)
+    @Size(max = 255)
     private String email;
 
     @NotBlank

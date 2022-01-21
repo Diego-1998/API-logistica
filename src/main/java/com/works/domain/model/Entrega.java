@@ -26,12 +26,9 @@ public class Entrega {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @ConvertGroup(from = Default.class, to = ClienteId.class)
     @ManyToOne
     private Cliente cliente;
 
-    @Valid
     @Embedded
     private Destinatario destinatario;
 
@@ -62,8 +59,15 @@ public class Entrega {
         if (naoPodeSerFinalizada()) {
             throw new NegocioException("Entrega não pode ser finalizada");
         }
-
         setStatus(StatusEntrega.FINALIZADA);
         setDataFinalizacao(OffsetDateTime.now());
     }
+    public boolean podeSerFinalizada() {
+        return StatusEntrega.PENDENTE.equals(getStatus());
+    }
+
+    public boolean naoPodeSerFinalizada() {
+        return !podeSerFinalizada();
+    }
+
 }
